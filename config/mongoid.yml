@@ -1,0 +1,16 @@
+defaults: &defaults
+  host: ds031087.mongolab.com
+  port: 31087
+  username: quickjob
+  password: quickjob
+  database: quickjob
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  uri: <%= ENV['MONGOLAB_URI'] %>  
+
