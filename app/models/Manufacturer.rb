@@ -1,7 +1,6 @@
 class Manufacturer
   include Mongoid::Document
  
-  field :
-  field :
+  field :name
 
 end

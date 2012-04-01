@@ -1,7 +1,10 @@
 class Vehicle
   include Mongoid::Document
 
-  field :
-  field :
+  field :manufacturer_id
+  field :manufacturer_name
+  field :year
+  field :name
+  field :status
 
 end

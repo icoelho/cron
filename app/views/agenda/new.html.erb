@@ -17,21 +17,44 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div class="post">
-				<h2 class="title"><a href="#">Agendamentos</a></h2>
+				<h3 class="title"><a href="#">Novo Agendamento</a></h3>
 
-				<p class="links"><a href="agendanew" class="more">novo</a></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
 
-                                <ul>
-                                   <% for cron in @cronall %>
-                                       <li>
-                                         <%=h cron.dtschedule %>  | 
-                                         <a href=""><%=h cron.licenseplate.upcase %></a>  | 
-                                         <%=h cron.ownername %>  
-                                       </li>
-                                   <% end %>
-                                </ul>
+
+				<form method="get" action="#">
+				<div>
+				      Placa<br><input type="text" name="s" id="search-text" value="" /><br>
+				      Modelo<br><input type="text" name="s" id="name-text" value="" /><br>
+                                      Nome<br><input type="text" name="owner" id="name-text" size="60" value="" /><br>
+                                      Email<br><input type="text" name="email" id="name-text" size="60" value="" /><br>
+                                      Telefone<br><input type="text" name="s" id="search-text" value="" /><br>
+
+                                      Data /  Hora : Min<br>
+                                      <input type="text" name="date" id="datepicker" maxlength="10" size ="10" value="" /> / 
+                                      <select name="hour" >
+                                          <option value="08">08</option>
+                                          <option value="09">09</option>
+                                          <option value="10">10</option>
+                                          <option value="11">11</option>
+                                          <option value="12">12</option>
+                                          <option value="13">13</option>
+                                          <option value="14">14</option>
+                                          <option value="15">15</option>
+                                          <option value="16">16</option>
+                                          <option value="17">17</option>
+                                      </select>
+:
+                                      <select name="min" >
+                                          <option value="00">00</option>
+                                          <option value="30">30</option>
+                                      </select>
+<br><br>
+
+                                      <input type="submit" id="search-submit" value="OK" />
+				</div>
+
 
 				</div>
 			</div>
@@ -100,3 +123,4 @@
 	<p>Copyright (c) 2011 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
 </div>
 <!-- end #footer -->
+

@@ -1,7 +1,8 @@
 class Store
   include Mongoid::Document
 
-  field :
-  field :
+  field :name
+  field :cnpj
+  field :status
 
 end

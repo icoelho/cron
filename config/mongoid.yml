@@ -1,9 +1,9 @@
 defaults: &defaults
-  host: ds031087.mongolab.com
-  port: 31087
-  username: quickjob
-  password: quickjob
-  database: quickjob
+  host: ds031627.mongolab.com
+  port: 31627
+  username: scheduling
+  password: scheduling
+  database: scheduling
 
 development:
   <<: *defaults
