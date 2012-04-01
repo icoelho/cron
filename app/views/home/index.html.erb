@@ -27,7 +27,7 @@
                                    <% for cron in @cronall %>
                                        <li>
                                          <%=h cron.dtschedule %>  | 
-                                         <a href=""><%=h cron.licenseplate.upcase %></a>  | 
+                                         <a href="/home/agendaedit?id=<%= cron.id %>"><%=h cron.licenseplate.upcase %></a>  | 
                                          <%=h cron.ownername %>  
                                        </li>
                                    <% end %>

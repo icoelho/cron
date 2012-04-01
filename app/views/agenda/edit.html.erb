@@ -17,21 +17,47 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div class="post">
-				<h2 class="title"><a href="#">Agendamentos</a></h2>
+				<h3 class="title"><a href="#">Altera Agendamento</a></h3>
 
-				<p class="links"><a href="#" class="more">novo</a></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
 
-                                <ul>
-                                   <% for cron in @cronall %>
-                                       <li>
-                                         <%=h cron.dtschedule %>  | 
-                                         <a href=""><%=h cron.licenseplate.upcase %></a>  | 
-                                         <%=h cron.ownername %>  
-                                       </li>
-                                   <% end %>
-                                </ul>
+
+				<form method="post" action="/home/agendaupdate">
+                                    <input type="hidden" name="id" value="<%= @agenda.id %>" />
+				<div>
+				      Placa<br><input type="text" name="license" id="search-text" value="<%= @agenda.licenseplate %>" /><br>
+				      Modelo<br><input type="text" name="modelo" id="name-text" value="<%= @agenda.vehicle_name %>" /><br>
+                                      Nome<br><input type="text" name="owner" id="name-text" size="60" value="<%= @agenda.ownername %>" /><br>
+                                      Email<br><input type="text" name="email" id="name-text" size="60" value="<%= @agenda.email %>" /><br>
+                                      Telefone<br><input type="text" name="phone" id="search-text" value="<%= @agenda.phone %>" /><br>
+
+                                      Data /  Hora : Min<br>
+                                      <input type="text" name="dtschedule" id="datepicker" maxlength="10" size ="10" value="<%= @agenda.dtschedule[6..7] %>/<%= @agenda.dtschedule[4..5] %>/<%= @agenda.dtschedule[0..3] %>" /> / 
+                                      <select name="hour" >
+                                          <option value="<%= @agenda.hrschedule[0..1] %>" selected="selected"><%= @agenda.hrschedule[0..1] %></option>
+                                          <option value="08">08</option>
+                                          <option value="09">09</option>
+                                          <option value="10">10</option>
+                                          <option value="11">11</option>
+                                          <option value="12">12</option>
+                                          <option value="13">13</option>
+                                          <option value="14">14</option>
+                                          <option value="15">15</option>
+                                          <option value="16">16</option>
+                                          <option value="17">17</option>
+                                      </select>
+:
+                                      <select name="min" >
+                                          <option value="<%= @agenda.hrschedule[2..3] %>" selected="selected"><%= @agenda.hrschedule[2..3] %></option>
+                                          <option value="00">00</option>
+                                          <option value="30">30</option>
+                                      </select>
+<br><br>
+
+                                      <input type="submit" id="search-submit" value="OK" />
+				</div>
+
 
 				</div>
 			</div>
@@ -100,3 +126,4 @@
 	<p>Copyright (c) 2011 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
 </div>
 <!-- end #footer -->
+

@@ -12,6 +12,32 @@ class HomeController < ApplicationController
       render "agenda/new"
    end
 
+   def agendaedit
+      loadagenda
+      @agenda = Notebook.find(params[:id])
+      render "agenda/edit"
+   end
+
+   def agendaupdate
+
+      dtsch      = params[:dtschedule]
+      dtsch = dtsch[6..9] << dtsch[3..4] << dtsch[0..1]
+      hrsch = params[:hour] << params[:min]
+
+      agenda = Notebook.find(params[:id])
+      agenda.update_attributes(
+             :vehicle_name => params[:modelo],
+             :licenseplate => params[:license],
+             :ownername    => params[:owner],
+             :email        => params[:email],
+             :phone        => params[:phone],
+             :dtschedule   => dtsch,
+             :hrschedule   => hrsch)
+
+      loadagenda
+      render "index"
+   end
+
    def agendasave
       t = Time.now
       dtregistro = t.strftime("%Y%m%d")
@@ -26,9 +52,12 @@ class HomeController < ApplicationController
              :phone        => params[:phone],
              :dtschedule   => dtsch,
              :hrschedule   => hrsch,
+             :status       => "ABERTO",
              :dtregister   => dtregistro
            )
       ag.save
+      loadagenda
+      render "index"
 
    end
 
