@@ -12,6 +12,23 @@ class HomeController < ApplicationController
       render "agenda/new"
    end
 
+   def agendasave
+      t = Time.now
+      dtregistro = t.strftime("%Y%m%d")
+      ag = Notebook.new(
+             :vehicle_name => params[:modelo],
+             :licenseplate => params[:license],
+             :ownername    => params[:owner],
+             :email        => params[:email],
+             :phone        => params[:phone],
+             :dtschedule   => params[:dtschedule],
+             :dtregister   => dtregistro
+           )
+      ag.save
+
+   end
+
+
    private 
 
    def loadagenda
@@ -23,5 +40,7 @@ class HomeController < ApplicationController
        @crontoday   = Notebook.where("status" => "ABERTO" , "dtschedule" => "#{today}")
        @crontomorrow  = Notebook.where("status" => "ABERTO" , "dtschedule" => "#{tomorrow}")
    end
+
+
 
 end

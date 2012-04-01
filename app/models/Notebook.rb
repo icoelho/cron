@@ -12,6 +12,7 @@ class Notebook
   field :email
   field :phone
   field :dtschedule
+  field :hrschedule
   field :dtregister
   field :status
  
