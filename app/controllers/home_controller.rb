@@ -15,13 +15,17 @@ class HomeController < ApplicationController
    def agendasave
       t = Time.now
       dtregistro = t.strftime("%Y%m%d")
+      dtsch      = params[:dtschedule]
+      dtsch = dtsch[6..9] << dtsch[3..4] << dtsch[0..1]
+      hrsch = params[:hour] << params[:min]
       ag = Notebook.new(
              :vehicle_name => params[:modelo],
              :licenseplate => params[:license],
              :ownername    => params[:owner],
              :email        => params[:email],
              :phone        => params[:phone],
-             :dtschedule   => params[:dtschedule],
+             :dtschedule   => dtsch,
+             :hrschedule   => hrsch,
              :dtregister   => dtregistro
            )
       ag.save
